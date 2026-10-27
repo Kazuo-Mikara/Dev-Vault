@@ -1,3 +1,103 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+@layer base {
+  :root {
+    --bg-primary: #0b0f17;
+    --bg-secondary: #0f1523;
+    --bg-card: #131b2e;
+    --bg-card-hover: #17223b;
+    --bg-code: #080c14;
+    --border-subtle: #1e293b;
+    --border-active: #3b82f6;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --accent-signals: #10b981;
+    --accent-primary: #6366f1;
+    --accent-glow: rgba(99, 102, 241, 0.25);
+  }
+
+  html.light {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f8fafc;
+    --bg-code: #0f172a;
+    --border-subtle: #e2e8f0;
+    --border-active: #6366f1;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --accent-signals: #059669;
+    --accent-primary: #4f46e5;
+    --accent-glow: rgba(79, 70, 229, 0.15);
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #243048;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #384a6e;
+}
+
+/* Pulse animation for Signals Reactive Graph */
+@keyframes signalPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    border-color: #10b981;
+  }
+  50% {
+    box-shadow: 0 0 25px 4px rgba(16, 185, 129, 0.4);
+    border-color: #34d399;
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    border-color: #1e293b;
+  }
+}
+
+.animate-signal-pulse {
+  animation: signalPulse 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes waveFlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-wave {
+  animation: waveFlow 2s linear infinite;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(19, 27, 46, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.light .glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
